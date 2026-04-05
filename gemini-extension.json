@@ -1,0 +1,6 @@
+{
+  "name": "openlore-skills",
+  "description": "Error recovery skills powered by OpenLore experience memory — query past fixes before debugging, report new fixes after resolving",
+  "version": "0.1.0",
+  "contextFileName": "GEMINI.md"
+}
