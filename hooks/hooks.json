@@ -2,11 +2,11 @@
   "hooks": {
     "SessionStart": [
       {
-        "matcher": "startup|clear|compact",
+        "matcher": "startup|resume|clear|compact",
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/session-start/notify.sh\"",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-start/notify.sh",
             "async": false
           }
         ]
@@ -18,7 +18,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/extract-error.sh\"",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/extract-error.sh",
             "timeout": 10
           }
         ]
