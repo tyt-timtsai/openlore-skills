@@ -1,0 +1,20 @@
+{
+  "name": "openlore-marketplace",
+  "description": "OpenLore Skills — error recovery powered by experience memory",
+  "owner": {
+    "name": "OpenLore",
+    "email": "hello@openlore.dev"
+  },
+  "plugins": [
+    {
+      "name": "openlore-skills",
+      "description": "Error recovery skills powered by OpenLore experience memory — query past fixes before debugging, report new fixes after resolving",
+      "version": "0.1.0",
+      "source": "./",
+      "author": {
+        "name": "OpenLore",
+        "email": "hello@openlore.dev"
+      }
+    }
+  ]
+}
