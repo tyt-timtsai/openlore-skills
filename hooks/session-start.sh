@@ -1,15 +1,37 @@
 #!/usr/bin/env bash
-# Notify the Agent that OpenLore is active at session start.
-# This outputs a JSON message that gets injected into the Agent's context.
+# SessionStart hook for openlore-skills plugin
+# Injects the using-openlore skill content into the Agent's context at session start.
 
-# Check if openlore-mcp is available
-if ! command -v openlore-mcp &>/dev/null; then
-  echo '{"hookSpecificOutput":{"additionalContext":"[OpenLore] Warning: openlore-mcp binary not found. Install it first: see https://github.com/openlore/openlore"}}'
-  exit 0
-fi
+set -euo pipefail
 
-# Get status to show record count
-STATUS=$(openlore-mcp status 2>/dev/null || echo "")
-RECORD_COUNT=$(echo "$STATUS" | grep -o '"record_count":[0-9]*' | grep -o '[0-9]*' || echo "0")
+# Determine plugin root directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
-echo "{\"hookSpecificOutput\":{\"additionalContext\":\"[OpenLore] Active with ${RECORD_COUNT} local fix records. When encountering errors, use the openlore-error-recovery or openlore-pattern-check skill BEFORE attempting fixes.\"}}"
+# Read using-openlore skill content
+using_openlore_content=$(cat "${PLUGIN_ROOT}/skills/using-openlore/SKILL.md" 2>&1 || echo "Error reading using-openlore skill")
+
+# Escape string for JSON embedding
+escape_for_json() {
+    local s="$1"
+    s="${s//\\/\\\\}"
+    s="${s//\"/\\\"}"
+    s="${s//$'\n'/\\n}"
+    s="${s//$'\r'/\\r}"
+    s="${s//$'\t'/\\t}"
+    printf '%s' "$s"
+}
+
+using_openlore_escaped=$(escape_for_json "$using_openlore_content")
+
+# Output context injection as JSON
+cat <<EOF
+{
+  "hookSpecificOutput": {
+    "hookEventName": "SessionStart",
+    "additionalContext": "<EXTREMELY_IMPORTANT>\nOpenLore experience memory is active.\n\n**Below is the full content of your 'openlore-skills:using-openlore' skill. For all other OpenLore skills, use the 'Skill' tool:**\n\n${using_openlore_escaped}\n\n</EXTREMELY_IMPORTANT>"
+  }
+}
+EOF
+
+exit 0

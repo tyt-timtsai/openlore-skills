@@ -9,7 +9,7 @@
     {
       "name": "openlore-skills",
       "description": "Error recovery skills powered by OpenLore experience memory — query past fixes before debugging, report new fixes after resolving",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "source": "./",
       "author": {
         "name": "OpenLore",
