@@ -15,9 +15,9 @@ Querying first is faster and more reliable than guessing.
 
 | Skill | When to invoke |
 |-------|---------------|
-| `openlore-error-recovery` | Any crash, stack trace, compile error, HTTP error, build failure, runtime exception |
-| `openlore-pattern-check` | Test assertion failure, wrong output, empty response, unexpected behavior, "it doesn't work", repeated failed attempts |
-| `openlore-knowledge-commit` | After successfully fixing a non-trivial bug |
+| `error-recovery` | Any crash, stack trace, compile error, HTTP error, build failure, runtime exception |
+| `pattern-check` | Test assertion failure, wrong output, empty response, unexpected behavior, "it doesn't work", repeated failed attempts |
+| `knowledge-commit` | After successfully fixing a non-trivial bug |
 
 ## The Rule
 

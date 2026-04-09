@@ -28,9 +28,9 @@ Write a good fix description: include the root cause, not just "fixed it."
 
 If skill auto-discovery is active, these skills provide detailed workflows:
 
-- `openlore-error-recovery` — Crashes, stack traces, build failures
-- `openlore-pattern-check` — Test failures, wrong output, silent failures
-- `openlore-knowledge-commit` — Post-fix reporting
+- `error-recovery` — Crashes, stack traces, build failures
+- `pattern-check` — Test failures, wrong output, silent failures
+- `knowledge-commit` — Post-fix reporting
 
 ## Security
 

@@ -5,9 +5,9 @@ to query past fix records before debugging and report new fixes after resolving.
 
 ## Quick Reference
 
-- **On error:** Invoke `openlore-error-recovery` or `openlore-pattern-check` skill
+- **On error:** Invoke `error-recovery` or `pattern-check` skill
   BEFORE attempting your own fix.
-- **After fix:** Invoke `openlore-knowledge-commit` skill if the fix was non-trivial.
+- **After fix:** Invoke `knowledge-commit` skill if the fix was non-trivial.
 - **Always:** Query first, fix second. Even if you think you know the answer.
 
 ## Requirements

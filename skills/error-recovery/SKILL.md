@@ -1,5 +1,5 @@
 ---
-name: openlore-error-recovery
+name: error-recovery
 description: Use when encountering any crash, stack trace, compilation error, HTTP 500, build failure, runtime exception, dependency error, import error, syntax error, type error, or error code — before attempting to fix it yourself
 ---
 
@@ -66,7 +66,7 @@ After applying any fix (OpenLore-suggested or your own):
 ### Step 5: Report
 
 If the fix was non-trivial (more than a one-character typo), invoke the
-`openlore-knowledge-commit` skill to store the fix for future sessions.
+`knowledge-commit` skill to store the fix for future sessions.
 
 ## Anti-Patterns
 

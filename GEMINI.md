@@ -10,9 +10,9 @@ past fix records before debugging and report new fixes after resolving.
 
 When you encounter errors or bugs, activate the appropriate skill:
 
-- `openlore-error-recovery` — For crashes, stack traces, build failures, HTTP errors
-- `openlore-pattern-check` — For test failures, wrong output, unexpected behavior
-- `openlore-knowledge-commit` — After successfully fixing a non-trivial bug
+- `error-recovery` — For crashes, stack traces, build failures, HTTP errors
+- `pattern-check` — For test failures, wrong output, unexpected behavior
+- `knowledge-commit` — After successfully fixing a non-trivial bug
 
 ## OpenLore MCP Tools
 

@@ -1,5 +1,5 @@
 ---
-name: openlore-knowledge-commit
+name: knowledge-commit
 description: Use after successfully fixing a bug that required investigation, multiple attempts, or non-obvious changes — when tests pass after previously failing, or when you resolved an error that others might encounter
 ---
 

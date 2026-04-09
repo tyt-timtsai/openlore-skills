@@ -1,7 +1,7 @@
 # Recovery SOP — Shared Reference
 
 This is the canonical 5-step recovery process used by both
-`openlore-error-recovery` and `openlore-pattern-check`.
+`error-recovery` and `pattern-check`.
 
 ## The 5 Steps
 
@@ -9,7 +9,7 @@ This is the canonical 5-step recovery process used by both
 2. **Query** — Call `openlore_query` MCP tool with extracted fields
 3. **Evaluate** — Apply high/medium confidence results; use low as hints; manual only if empty
 4. **Verify** — Re-run the original failing command to confirm resolution
-5. **Report** — If non-trivial fix, invoke `openlore-knowledge-commit` skill
+5. **Report** — If non-trivial fix, invoke `knowledge-commit` skill
 
 ## Step Ordering
 

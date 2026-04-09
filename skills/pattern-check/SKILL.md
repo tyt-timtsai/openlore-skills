@@ -1,5 +1,5 @@
 ---
-name: openlore-pattern-check
+name: pattern-check
 description: Use when tests fail with assertion errors, output is wrong or empty, behavior is unexpected, API returns 200 but data is missing, "it doesn't work" or "something is wrong", you have tried multiple fixes without success, or the agent is going in circles
 ---
 
@@ -24,7 +24,7 @@ consulting the experience memory is a waste of time.
 
 ### Step 1: Extract
 
-This is the key difference from `openlore-error-recovery`. Instead of extracting
+This is the key difference from `error-recovery`. Instead of extracting
 a stack trace, you need to describe the symptom:
 
 **For test assertion failures:**
@@ -55,17 +55,17 @@ openlore_query(error_message="<symptom description>", tool="<tool>")
 
 ### Step 3: Evaluate
 
-Same as `openlore-error-recovery` Step 3. Apply high/medium confidence results,
+Same as `error-recovery` Step 3. Apply high/medium confidence results,
 use low confidence as hints, proceed manually only if no results.
 
 ### Step 4: Verify
 
-Same as `openlore-error-recovery` Step 4. Re-run the failing test or reproduce
+Same as `error-recovery` Step 4. Re-run the failing test or reproduce
 the scenario to confirm the fix works.
 
 ### Step 5: Report
 
-If resolved, invoke `openlore-knowledge-commit`. Pattern-based fixes are
+If resolved, invoke `knowledge-commit`. Pattern-based fixes are
 especially valuable to store — they are exactly the kind of knowledge that
 LLM training data often lacks.
 
