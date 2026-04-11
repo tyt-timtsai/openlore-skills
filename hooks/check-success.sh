@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Detect success-after-failure pattern and remind Claude to report.
-# Runs on PostToolUse (Bash). Companion: save-failure.sh on PostToolUseFailure.
+# Runs on PostToolUse (Bash). Companion: on-failure.sh on PostToolUseFailure.
 
 DATA_DIR="${CLAUDE_PLUGIN_DATA:-/tmp/openlore-hooks}"
 STATE_FILE="$DATA_DIR/last_failure.json"
@@ -33,7 +33,10 @@ if [ "$BASE_CMD" = "$SAVED_BASE" ] && [ "$AGE" -lt 600 ]; then
   TOOL=$(echo "$SAVED_BASE" | awk '{print $1}')
 
   jq -n --arg err "$SAVED_ERROR" --arg tool "$TOOL" \
-    '{hookSpecificOutput: ("SUCCESS AFTER FAILURE: `" + $tool + "` just succeeded after previously failing. You MUST call openlore_report now.\n- error: the original error message\n- fix: describe root cause + what you changed\n- tool: " + $tool + "\n- confidence: high\n\nOriginal error (for reference):\n" + $err)}'
+    '{
+      "decision": "block",
+      "reason": ("SUCCESS AFTER FAILURE: " + $tool + " just succeeded after previously failing. You MUST call openlore_report with: error (the original error), fix (root cause + what changed), tool (" + $tool + "), confidence (high). Original error: " + $err)
+    }'
 else
   # Different command or expired — clean up
   rm -f "$STATE_FILE"
