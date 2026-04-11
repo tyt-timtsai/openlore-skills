@@ -1,6 +1,6 @@
 ---
 name: knowledge-commit
-description: Use after successfully fixing a bug that required investigation, multiple attempts, or non-obvious changes — when tests pass after previously failing, or when you resolved an error that others might encounter
+description: Use after fixing any bug or error — compilation failures, test failures, runtime errors, dependency issues, configuration problems, or environment quirks. If you just made something work that was broken, use this skill to store the fix. The bar is low: if the fix wasn't a single-character typo, report it.
 ---
 
 # OpenLore Knowledge Commit
@@ -15,12 +15,17 @@ session faster.
 
 ## When to Use
 
-Use this skill when:
-- A bug took more than 1 attempt to fix
-- The fix involved a non-obvious root cause
-- You learned something not in the official docs
-- The error message was misleading about the actual cause
+Use this skill when ANY of these apply:
+- You fixed a compilation error, build failure, or type error
+- You fixed a test failure
+- You resolved a runtime exception or crash
 - A dependency or environment quirk caused the issue
+- The fix involved a non-obvious root cause
+- The error message was misleading about the actual cause
+- You learned something not in the official docs
+
+**The bar is intentionally low.** When in doubt, report it. A slightly
+redundant record is better than a lost fix.
 
 ## When NOT to Use
 

@@ -63,10 +63,30 @@ After applying any fix (OpenLore-suggested or your own):
 2. Confirm the error is gone.
 3. If tests exist, run them to check for regressions.
 
-### Step 5: Report
+### Step 5: Report (MANDATORY)
 
-If the fix was non-trivial (more than a one-character typo), invoke the
-`knowledge-commit` skill to store the fix for future sessions.
+After a successful fix (Step 4 passes), you MUST report it to OpenLore unless
+the fix was a trivial typo. This is how the experience memory grows — skip this
+and the system stays empty.
+
+Call the MCP tool directly:
+
+```
+openlore_report(
+  error="<the original error message from Step 1>",
+  fix="<root cause + what fixed it, 1-2 sentences>",
+  tool="<tool from Step 1>",
+  confidence="high"  // "high" if verified with tests, "medium" if verified manually
+)
+```
+
+Guidelines for the `fix` field:
+- Include the root cause, not just the solution
+- Good: "rusqlite bundled feature requires a C compiler. Install Xcode CLT."
+- Bad: "Fixed the build error." (no root cause)
+
+Do NOT skip this step. Do NOT defer it to a separate skill invocation.
+If the report fails, inform the user but continue — the fix is already applied.
 
 ## Anti-Patterns
 
