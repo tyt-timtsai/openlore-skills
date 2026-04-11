@@ -14,7 +14,7 @@ if command -v openlore-mcp &>/dev/null; then
 fi
 
 # --- Part 2: Save failure state for success-after-failure detection ---
-DATA_DIR="${CLAUDE_PLUGIN_DATA:-/tmp/openlore-hooks}"
+DATA_DIR="${CLAUDE_PLUGIN_DATA:-${HOME}/.openlore/state}"
 mkdir -p "$DATA_DIR"
 
 COMMAND=$(echo "$INPUT" | jq -r '.tool_input.command // ""')

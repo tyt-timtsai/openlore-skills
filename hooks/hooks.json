@@ -18,14 +18,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/extract-error.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/on-failure.sh",
             "timeout": 10
-          },
-          {
-            "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/save-failure.sh",
-            "timeout": 5,
-            "async": true
           }
         ]
       }

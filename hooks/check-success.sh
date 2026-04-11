@@ -2,7 +2,7 @@
 # Detect success-after-failure pattern and remind Claude to report.
 # Runs on PostToolUse (Bash). Companion: on-failure.sh on PostToolUseFailure.
 
-DATA_DIR="${CLAUDE_PLUGIN_DATA:-/tmp/openlore-hooks}"
+DATA_DIR="${CLAUDE_PLUGIN_DATA:-${HOME}/.openlore/state}"
 STATE_FILE="$DATA_DIR/last_failure.json"
 
 if [ ! -f "$STATE_FILE" ]; then
