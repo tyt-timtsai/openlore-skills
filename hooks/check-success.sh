@@ -27,7 +27,14 @@ NOW=$(date +%s)
 AGE=$(( NOW - SAVED_TS ))
 
 # Match: same base command, within 10 minutes
-if [ "$BASE_CMD" = "$SAVED_BASE" ] && [ "$AGE" -lt 600 ]; then
+# Expired — clean up and exit
+if [ "$AGE" -ge 600 ]; then
+  rm -f "$STATE_FILE"
+  exit 0
+fi
+
+# Same base command = success-after-failure!
+if [ "$BASE_CMD" = "$SAVED_BASE" ]; then
   rm -f "$STATE_FILE"
 
   TOOL=$(echo "$SAVED_BASE" | awk '{print $1}')
@@ -37,7 +44,5 @@ if [ "$BASE_CMD" = "$SAVED_BASE" ] && [ "$AGE" -lt 600 ]; then
       "decision": "block",
       "reason": ("SUCCESS AFTER FAILURE: " + $tool + " just succeeded after previously failing. You MUST call openlore_report with: error (the original error), fix (root cause + what changed), tool (" + $tool + "), confidence (high). Original error: " + $err)
     }'
-else
-  # Different command or expired — clean up
-  rm -f "$STATE_FILE"
 fi
+# Different command — keep state for future match
