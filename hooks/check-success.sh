@@ -42,7 +42,7 @@ if [ "$BASE_CMD" = "$SAVED_BASE" ]; then
   jq -n --arg err "$SAVED_ERROR" --arg tool "$TOOL" \
     '{
       "decision": "block",
-      "reason": ("SUCCESS AFTER FAILURE: " + $tool + " just succeeded after previously failing. You MUST call openlore_report with: error (the original error), fix (root cause + what changed), tool (" + $tool + "), confidence (high). Original error: " + $err)
+      "reason": ("SUCCESS AFTER FAILURE: " + $tool + " just succeeded after previously failing. If you applied a real fix (code, config, or environment change), call openlore_report with: error (the original error), fix (root cause + what changed), tool (" + $tool + "), confidence (high). If the success was exploratory (different args, navigation, unrelated command) and no deliberate fix was applied, skip reporting. Original error: " + $err)
     }'
 fi
 # Different command — keep state for future match
